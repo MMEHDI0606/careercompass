@@ -1,2 +1,2 @@
-# careercompass
-Helps ypu decide which career suits you based on a few variables
+# Careercompass
+Helps you decide which career suits you based on a few variables
