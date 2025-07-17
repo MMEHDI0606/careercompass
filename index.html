@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Path Predictor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-label {
+            @apply block text-sm font-medium text-gray-300 mb-1;
+        }
+
+        .form-input, .form-select {
+            @apply w-full bg-gray-700 border border-gray-600 text-white rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500;
+        }
+
+        .form-slider {
+            @apply w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer;
+        }
+
+        .form-radio-label {
+            @apply ml-2 text-sm text-gray-300;
+        }
+
+        .form-radio-input {
+            @apply h-4 w-4 text-indigo-600 border-gray-500 focus:ring-indigo-500;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+
+    <main class="bg-gray-800 p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-4xl">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-white">🎓 Career Path Predictor</h1>
+            <p class="text-gray-400 mt-2">Answer the questions below to discover your recommended career path.</p>
+        </div>
+
+        <form id="career-form">
+            <!-- Section 1: Personal and Work Style -->
+            <fieldset class="mb-6">
+                <legend class="text-xl font-semibold text-white border-b border-gray-700 pb-2 mb-4 w-full">Personal & Work Style</legend>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label for="hours_working_per_day" class="form-label">Preferred Work Hours/Day: <span id="hours-value" class="font-bold text-indigo-400">8</span></label>
+                        <input type="range" id="hours_working_per_day" name="hours_working_per_day" min="4" max="12" value="8" class="form-slider">
+                    </div>
+                    <div>
+                        <label class="form-label">Are you an introvert?</label>
+                        <div class="flex items-center mt-2">
+                            <input type="radio" id="introvert_yes" name="introvert" value="1" class="form-radio-input"><label for="introvert_yes" class="form-radio-label">Yes</label>
+                            <input type="radio" id="introvert_no" name="introvert" value="0" class="form-radio-input ml-4" checked><label for="introvert_no" class="form-radio-label">No</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="form-label">Strong self-learner?</label>
+                        <div class="flex items-center mt-2">
+                            <input type="radio" id="self_learning_yes" name="self_learning_capability" value="1" class="form-radio-input" checked><label for="self_learning_yes" class="form-radio-label">Yes</label>
+                            <input type="radio" id="self_learning_no" name="self_learning_capability" value="0" class="form-radio-input ml-4"><label for="self_learning_no" class="form-radio-label">No</label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Section 2: Academic and Technical Skills -->
+            <fieldset class="mb-6">
+                <legend class="text-xl font-semibold text-white border-b border-gray-700 pb-2 mb-4 w-full">Academic & Technical Skills</legend>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label for="os_skills" class="form-label">Operating Systems (%): <span id="os-value" class="font-bold text-indigo-400">50</span></label>
+                        <input type="range" id="os_skills" name="os_skills" min="0" max="100" value="50" class="form-slider">
+                    </div>
+                    <div>
+                        <label for="algo_skills" class="form-label">Algorithms (%): <span id="algo-value" class="font-bold text-indigo-400">50</span></label>
+                        <input type="range" id="algo_skills" name="algo_skills" min="0" max="100" value="50" class="form-slider">
+                    </div>
+                    <div>
+                        <label for="prog_concepts_skills" class="form-label">Programming Concepts (%): <span id="prog-value" class="font-bold text-indigo-400">50</span></label>
+                        <input type="range" id="prog_concepts_skills" name="prog_concepts_skills" min="0" max="100" value="50" class="form-slider">
+                    </div>
+                    <div>
+                        <label for="se_skills" class="form-label">Software Engineering (%): <span id="se-value" class="font-bold text-indigo-400">50</span></label>
+                        <input type="range" id="se_skills" name="se_skills" min="0" max="100" value="50" class="form-slider">
+                    </div>
+                    <div>
+                        <label for="cn_skills" class="form-label">Computer Networks (%): <span id="cn-value" class="font-bold text-indigo-400">50</span></label>
+                        <input type="range" id="cn_skills" name="cn_skills" min="0" max="100" value="50" class="form-slider">
+                    </div>
+                    <div>
+                        <label for="math_skills" class="form-label">Mathematics (%): <span id="math-value" class="font-bold text-indigo-400">50</span></label>
+                        <input type="range" id="math_skills" name="math_skills" min="0" max="100" value="50" class="form-slider">
+                    </div>
+                    <div>
+                        <label for="coding_skills" class="form-label">Coding Skills (1-10): <span id="coding-value" class="font-bold text-indigo-400">5</span></label>
+                        <input type="range" id="coding_skills" name="coding_skills" min="1" max="10" value="5" class="form-slider">
+                    </div>
+                    <div>
+                        <label for="logical_quotient" class="form-label">Logical Reasoning (1-10): <span id="logical-value" class="font-bold text-indigo-400">5</span></label>
+                        <input type="range" id="logical_quotient" name="logical_quotient" min="1" max="10" value="5" class="form-slider">
+                    </div>
+                    <div>
+                        <label for="public_speaking" class="form-label">Public Speaking (1-10): <span id="public-value" class="font-bold text-indigo-400">5</span></label>
+                        <input type="range" id="public_speaking" name="public_speaking" min="1" max="10" value="5" class="form-slider">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Section 3: Interests -->
+            <fieldset>
+                <legend class="text-xl font-semibold text-white border-b border-gray-700 pb-2 mb-4 w-full">Interests & Experience</legend>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="certifications" class="form-label">Certification Interest</label>
+                        <select id="certifications" name="certifications" class="form-select">
+                            <option>r programming</option>
+                            <option>machine learning</option>
+                            <option>information security</option>
+                            <option>python</option>
+                            <option>shell programming</option>
+                            <option>hadoop</option>
+                            <option>distro making</option>
+                            <option>full stack</option>
+                            <option>app development</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="workshops" class="form-label">Workshop Interest</label>
+                        <select id="workshops" name="workshops" class="form-select">
+                            <option>data science</option>
+                            <option>database security</option>
+                            <option>game development</option>
+                            <option>hacking</option>
+                            <option>system designing</option>
+                            <option>testing</option>
+                            <option>cloud computing</option>
+                            <option>web technologies</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Submit Button -->
+            <div class="mt-8 text-center">
+                <button type="submit" id="submit-button" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 focus:ring-offset-gray-800">
+                    ✨ Predict My Career Path
+                </button>
+            </div>
+        </form>
+
+        <!-- Result Display Area -->
+        <div id="result-container" class="mt-8 text-center hidden">
+            <div id="loader" class="flex justify-center items-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-400"></div>
+            </div>
+            <div id="prediction-result" class="hidden">
+                <h2 class="text-2xl font-bold text-white">Recommended Career Path:</h2>
+                <p id="career-name" class="text-3xl font-extrabold text-indigo-400 mt-2"></p>
+                <div class="mt-6 bg-gray-700 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold text-white">Get Started!</h3>
+                    <p class="text-gray-300 mt-1">Here is a free, beginner-friendly course to start your journey:</p>
+                    <a id="course-link" href="#" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                        Start Learning: <span id="course-title"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // --- Course Data ---
+        const courseData = {
+            'AI ML Specialist': ['Fundamentals of AI & ML', 'https://www.skillsoft.com/course/fundamentals-of-ai-ml-introduction-to-artificial-intelligence-25a4415c-6493-4324-ba6b-7622eb140ea4'],
+            'API Specialist': ['NGINX Kick-Start', 'https://www.f5.com/go/event/asean-on-demand-learning'],
+            'Application Support Engineer': ['Introduction to iOS Mobile Application Development', 'https://www.coursera.org/learn/ios-app-development-basics'],
+            'Business Analyst': ['Business Analysis & Process Management', 'https://www.coursera.org/projects/business-analysis-process-management'],
+            'Business Intelligence Analyst': ['IBM Business Intelligence (BI) Analyst Professional Certificate', 'https://www.coursera.org/professional-certificates/ibm-business-intelligence-analyst'],
+            'Business Systems Analyst': ['Google Data Analytics Certificate', 'https://www.coursera.org/professional-certificates/google-data-analytics'],
+            'CRM Business Analyst': ['CRM Business Analyst (Beginner)', 'https://lacroixsoft.odoo.com/slides/crm-business-analyst-beginner-81'],
+            'Customer Service Executive': ['Becoming a Customer Service Executive', 'https://alison.com/course/becoming-a-customer-service-executive'],
+            'Cyber Security Specialist': ['Cyber Security Course for Beginners - Level 01', 'https://www.udemy.com/course/certified-secure-netizen/'],
+            'Data Scientist': ['Python for Data Science', 'https://www.mygreatlearning.com/academy/learn-for-free/courses/python-for-data-science'],
+            'Database Administrator': ['Introduction to Database and SQL', 'https://www.mygreatlearning.com/academy/learn-for-free/courses/introduction-to-database-and-sql'],
+            'Database Developer': ['Introduction to Database and SQL', 'https://www.mygreatlearning.com/academy/learn-for-free/courses/introduction-to-database-and-sql'],
+            'Database Professional': ['Introduction to Database and SQL', 'https://www.mygreatlearning.com/academy/learn-for-free/courses/introduction-to-database-and-sql'],
+            'Graphics Designer': ['Get Started in Motion Graphics', 'https://www.nobledesktop.com/blog/get-started-in-motion-graphics-free-online-course'],
+            'Hardware Engineer': ['Introduction to Hardware and Operating Systems', 'https://www.coursera.org/learn/introduction-hardware-operating-systems'],
+            'Helpdesk Engineer': ['Google IT Support Certificate', 'https://www.coursera.org/professional-certificates/google-it-support'],
+            'Information Security Analyst': ['Google Cybersecurity Professional Certificate', 'https://www.coursera.org/professional-certificates/google-cybersecurity'],
+            'Information Security Specialist': ['Introduction to Cybersecurity', 'https://www.edx.org/course/introduction-to-cybersecurity'],
+            'IT Manager': ['Google Project Management Certificate', 'https://www.coursera.org/professional-certificates/google-project-management'],
+            'Mobile App Developer': ['Meta Android Developer Professional Certificate', 'https://www.coursera.org/professional-certificates/meta-android-developer'],
+            'Networking Engineer': ['Introduction to Network Security', 'https://www.open.edu/openlearn/science-maths-technology/introduction-network-security/content-section-overview'],
+            'Product Manager': ['Google Project Management Certificate', 'https://www.coursera.org/professional-certificates/google-project-management'],
+            'Programmer Analyst': ['Python for Everybody', 'https://www.freecodecamp.org/learn/scientific-computing-with-python/'],
+            'Project Manager': ['Google Project Management Certificate', 'https://www.coursera.org/professional-certificates/google-project-management'],
+            'QA Engineer': ['Introduction to Software Testing', 'https://www.coursera.org/learn/introduction-software-testing'],
+            'Software Developer': ['JavaScript Algorithms and Data Structures', 'https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/'],
+            'Systems Analyst': ['Google IT Support Certificate', 'https://www.coursera.org/professional-certificates/google-it-support'],
+            'Technical Support Engineer': ['Google IT Support Certificate', 'https://www.coursera.org/professional-certificates/google-it-support'],
+            'Technical Writer': ['Google Technical Writing Fundamentals', 'https://developers.google.com/tech-writing/one'],
+            'UX UI Designer': ['Google UX Design Certificate', 'https://www.coursera.org/professional-certificates/google-ux-design'],
+            'Web Developer': ['Responsive Web Design', 'https://www.freecodecamp.org/learn/responsive-web-design/'],
+        };
+
+        // --- Form Handling ---
+        const form = document.getElementById('career-form');
+        const resultContainer = document.getElementById('result-container');
+        const loader = document.getElementById('loader');
+        const predictionResult = document.getElementById('prediction-result');
+        const careerName = document.getElementById('career-name');
+        const courseLink = document.getElementById('course-link');
+        const courseTitle = document.getElementById('course-title');
+
+        // Update slider value displays
+        document.querySelectorAll('.form-slider').forEach(slider => {
+            const valueSpan = document.getElementById(`${slider.id.split('_')[0]}-value`);
+            if (valueSpan) {
+                slider.addEventListener('input', (e) => {
+                    valueSpan.textContent = e.target.value;
+                });
+            }
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Show loader and hide previous result
+            resultContainer.classList.remove('hidden');
+            loader.classList.remove('hidden');
+            predictionResult.classList.add('hidden');
+
+            const formData = new FormData(form);
+
+            // Construct the JSON payload for the API
+            const userInput = {
+                'AI_ML_Skills': 0, 'Academic_Performance_Score': 3.0, 'Algorithms_Skills': parseInt(formData.get('algo_skills')),
+                'Business_Analysis_Skills': 0, 'Coding_Skills_Rating': parseInt(formData.get('coding_skills')), 'Communication_Skills': 50,
+                'Computer_Architecture_Skills': 50, 'Computer_Forensics_Skills': 0, 'Cyber_Security_Skills': 0,
+                'Data_Science_Skills': 0, 'Database_Skills': 0, 'Distributed_Computing_Skills': 0,
+                'Electronics_Skills': 50, 'Extra-courses did': 'no',
+                'Graphics_Designing_Skills': 0, 'Hours working per day': parseInt(formData.get('hours_working_per_day')),
+                'Introvert': parseInt(formData.get('introvert')), 'Java_Skills': 0, 'Logical_Reasoning_Skills': parseInt(formData.get('logical_quotient')),
+                'Mathematics_Skills': parseInt(formData.get('math_skills')), 'Memory_Capability_Score': 'medium', 'Networking_Skills': parseInt(formData.get('cn_skills')),
+                'Operating_Systems_Skills': parseInt(formData.get('os_skills')), 'Programming_Skills': parseInt(formData.get('prog_concepts_skills')),
+                'Project_Management_Skills': 0, 'Public_Speaking_Skills': parseInt(formData.get('public_speaking')), 'Python_Skills': 0,
+                'Reading_Writing_Skills': 'medium', 'SQL_Skills': 0, 'Software_Development_Skills': 0,
+                'Software_Engineering_Skills': parseInt(formData.get('se_skills')), 'Technical_Communication_Skills': 0,
+                'Troubleshooting_Skills': 0, 'can work long time before system?': 1,
+                'certifications': formData.get('certifications'), 'hackathons': 1, 'olympiads': 'no',
+                'self-learning capability?': parseInt(formData.get('self_learning_capability')),
+                'talenttests taken?': 'no', 'worked in teams ever?': 1,
+                'workshops': formData.get('workshops')
+            };
+
+            // --- API Call ---
+            
+            const API_URL = "https://career-guide-lite.netlify.app/";
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userInput)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const career = data.predicted_career;
+                const [cTitle, cUrl] = courseData[career] || ["Course Not Found", "#"];
+
+                // Display result
+                careerName.textContent = career;
+                courseTitle.textContent = cTitle;
+                courseLink.href = cUrl;
+
+            } catch (error) {
+                careerName.textContent = "Prediction Failed";
+                courseTitle.textContent = `Error: ${error.message}`;
+                courseLink.href = "#";
+            } finally {
+                // Hide loader and show result
+                loader.classList.add('hidden');
+                predictionResult.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
