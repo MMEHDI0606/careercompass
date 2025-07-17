@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,31 +12,29 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-
         .form-label {
             @apply block text-sm font-medium text-gray-300 mb-1;
         }
-
         .form-input, .form-select {
             @apply w-full bg-gray-700 border border-gray-600 text-white rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500;
         }
-
         .form-slider {
             @apply w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer;
         }
-
         .form-radio-label {
             @apply ml-2 text-sm text-gray-300;
         }
-
         .form-radio-input {
             @apply h-4 w-4 text-indigo-600 border-gray-500 focus:ring-indigo-500;
+        }
+        .fieldset-grid {
+             @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
         }
     </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
 
-    <main class="bg-gray-800 p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-4xl">
+    <main class="bg-gray-800 p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-5xl">
         <div class="text-center mb-8">
             <h1 class="text-3xl font-bold text-white">🎓 Career Path Predictor</h1>
             <p class="text-gray-400 mt-2">Answer the questions below to discover your recommended career path.</p>
@@ -46,7 +44,7 @@
             <!-- Section 1: Personal and Work Style -->
             <fieldset class="mb-6">
                 <legend class="text-xl font-semibold text-white border-b border-gray-700 pb-2 mb-4 w-full">Personal & Work Style</legend>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="fieldset-grid">
                     <div>
                         <label for="hours_working_per_day" class="form-label">Preferred Work Hours/Day: <span id="hours-value" class="font-bold text-indigo-400">8</span></label>
                         <input type="range" id="hours_working_per_day" name="hours_working_per_day" min="4" max="12" value="8" class="form-slider">
@@ -65,13 +63,31 @@
                             <input type="radio" id="self_learning_no" name="self_learning_capability" value="0" class="form-radio-input ml-4"><label for="self_learning_no" class="form-radio-label">No</label>
                         </div>
                     </div>
+                     <div>
+                        <label class="form-label">Can you work long hours before a system?</label>
+                        <div class="flex items-center mt-2">
+                            <input type="radio" id="long_work_yes" name="can_work_long_time" value="1" class="form-radio-input" checked><label for="long_work_yes" class="form-radio-label">Yes</label>
+                            <input type="radio" id="long_work_no" name="can_work_long_time" value="0" class="form-radio-input ml-4"><label for="long_work_no" class="form-radio-label">No</label>
+                        </div>
+                    </div>
+                     <div>
+                        <label class="form-label">Have you worked in teams before?</label>
+                        <div class="flex items-center mt-2">
+                            <input type="radio" id="teams_yes" name="worked_in_teams" value="1" class="form-radio-input" checked><label for="teams_yes" class="form-radio-label">Yes</label>
+                            <input type="radio" id="teams_no" name="worked_in_teams" value="0" class="form-radio-input ml-4"><label for="teams_no" class="form-radio-label">No</label>
+                        </div>
+                    </div>
                 </div>
             </fieldset>
 
             <!-- Section 2: Academic and Technical Skills -->
             <fieldset class="mb-6">
                 <legend class="text-xl font-semibold text-white border-b border-gray-700 pb-2 mb-4 w-full">Academic & Technical Skills</legend>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="fieldset-grid">
+                    <div>
+                        <label for="gpa" class="form-label">Overall GPA (out of 4.0): <span id="gpa-value" class="font-bold text-indigo-400">3.0</span></label>
+                        <input type="range" id="gpa" name="gpa" min="0" max="4" value="3.0" step="0.1" class="form-slider">
+                    </div>
                     <div>
                         <label for="os_skills" class="form-label">Operating Systems (%): <span id="os-value" class="font-bold text-indigo-400">50</span></label>
                         <input type="range" id="os_skills" name="os_skills" min="0" max="100" value="50" class="form-slider">
@@ -92,34 +108,50 @@
                         <label for="cn_skills" class="form-label">Computer Networks (%): <span id="cn-value" class="font-bold text-indigo-400">50</span></label>
                         <input type="range" id="cn_skills" name="cn_skills" min="0" max="100" value="50" class="form-slider">
                     </div>
-                    <div>
+                     <div>
+                        <label for="electronics_skills" class="form-label">Electronics (%): <span id="electronics-value" class="font-bold text-indigo-400">50</span></label>
+                        <input type="range" id="electronics_skills" name="electronics_skills" min="0" max="100" value="50" class="form-slider">
+                    </div>
+                     <div>
+                        <label for="ca_skills" class="form-label">Computer Architecture (%): <span id="ca-value" class="font-bold text-indigo-400">50</span></label>
+                        <input type="range" id="ca_skills" name="ca_skills" min="0" max="100" value="50" class="form-slider">
+                    </div>
+                     <div>
                         <label for="math_skills" class="form-label">Mathematics (%): <span id="math-value" class="font-bold text-indigo-400">50</span></label>
                         <input type="range" id="math_skills" name="math_skills" min="0" max="100" value="50" class="form-slider">
+                    </div>
+                     <div>
+                        <label for="comm_skills" class="form-label">Communication Skills (%): <span id="comm-value" class="font-bold text-indigo-400">50</span></label>
+                        <input type="range" id="comm_skills" name="comm_skills" min="0" max="100" value="50" class="form-slider">
                     </div>
                     <div>
                         <label for="coding_skills" class="form-label">Coding Skills (1-10): <span id="coding-value" class="font-bold text-indigo-400">5</span></label>
                         <input type="range" id="coding_skills" name="coding_skills" min="1" max="10" value="5" class="form-slider">
                     </div>
-                    <div>
+                     <div>
                         <label for="logical_quotient" class="form-label">Logical Reasoning (1-10): <span id="logical-value" class="font-bold text-indigo-400">5</span></label>
                         <input type="range" id="logical_quotient" name="logical_quotient" min="1" max="10" value="5" class="form-slider">
                     </div>
-                    <div>
+                     <div>
                         <label for="public_speaking" class="form-label">Public Speaking (1-10): <span id="public-value" class="font-bold text-indigo-400">5</span></label>
                         <input type="range" id="public_speaking" name="public_speaking" min="1" max="10" value="5" class="form-slider">
                     </div>
                 </div>
             </fieldset>
-
+            
             <!-- Section 3: Interests -->
-            <fieldset>
+             <fieldset>
                 <legend class="text-xl font-semibold text-white border-b border-gray-700 pb-2 mb-4 w-full">Interests & Experience</legend>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                 <div class="fieldset-grid">
+                    <div>
+                        <label for="hackathons" class="form-label">Hackathons Attended: <span id="hackathons-value" class="font-bold text-indigo-400">1</span></label>
+                        <input type="range" id="hackathons" name="hackathons" min="0" max="10" value="1" class="form-slider">
+                    </div>
                     <div>
                         <label for="certifications" class="form-label">Certification Interest</label>
                         <select id="certifications" name="certifications" class="form-select">
                             <option>r programming</option>
-                            <option>machine learning</option>
+                            <option selected>machine learning</option>
                             <option>information security</option>
                             <option>python</option>
                             <option>shell programming</option>
@@ -132,7 +164,7 @@
                     <div>
                         <label for="workshops" class="form-label">Workshop Interest</label>
                         <select id="workshops" name="workshops" class="form-select">
-                            <option>data science</option>
+                            <option selected>data science</option>
                             <option>database security</option>
                             <option>game development</option>
                             <option>hacking</option>
@@ -142,7 +174,28 @@
                             <option>web technologies</option>
                         </select>
                     </div>
-                </div>
+                    <div>
+                        <label class="form-label">Took Extra Courses?</label>
+                        <div class="flex items-center mt-2">
+                            <input type="radio" id="extra_courses_yes" name="extra_courses_did" value="yes" class="form-radio-input"><label for="extra_courses_yes" class="form-radio-label">Yes</label>
+                            <input type="radio" id="extra_courses_no" name="extra_courses_did" value="no" class="form-radio-input ml-4" checked><label for="extra_courses_no" class="form-radio-label">No</label>
+                        </div>
+                    </div>
+                     <div>
+                        <label class="form-label">Participated in Olympiads?</label>
+                        <div class="flex items-center mt-2">
+                           <input type="radio" id="olympiads_yes" name="olympiads" value="yes" class="form-radio-input"><label for="olympiads_yes" class="form-radio-label">Yes</label>
+                           <input type="radio" id="olympiads_no" name="olympiads" value="no" class="form-radio-input ml-4" checked><label for="olympiads_no" class="form-radio-label">No</label>
+                        </div>
+                    </div>
+                     <div>
+                        <label class="form-label">Taken Talent Tests?</label>
+                        <div class="flex items-center mt-2">
+                           <input type="radio" id="talent_tests_yes" name="talenttests_taken" value="yes" class="form-radio-input"><label for="talent_tests_yes" class="form-radio-label">Yes</label>
+                           <input type="radio" id="talent_tests_no" name="talenttests_taken" value="no" class="form-radio-input ml-4" checked><label for="talent_tests_no" class="form-radio-label">No</label>
+                        </div>
+                    </div>
+                 </div>
             </fieldset>
 
             <!-- Submit Button -->
@@ -159,15 +212,15 @@
                 <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-400"></div>
             </div>
             <div id="prediction-result" class="hidden">
-                <h2 class="text-2xl font-bold text-white">Recommended Career Path:</h2>
-                <p id="career-name" class="text-3xl font-extrabold text-indigo-400 mt-2"></p>
-                <div class="mt-6 bg-gray-700 p-4 rounded-lg">
+                 <h2 class="text-2xl font-bold text-white">Recommended Career Path:</h2>
+                 <p id="career-name" class="text-3xl font-extrabold text-indigo-400 mt-2"></p>
+                 <div class="mt-6 bg-gray-700 p-4 rounded-lg">
                     <h3 class="text-xl font-semibold text-white">Get Started!</h3>
                     <p class="text-gray-300 mt-1">Here is a free, beginner-friendly course to start your journey:</p>
                     <a id="course-link" href="#" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-colors">
                         Start Learning: <span id="course-title"></span>
                     </a>
-                </div>
+                 </div>
             </div>
         </div>
 
@@ -208,7 +261,7 @@
             'UX UI Designer': ['Google UX Design Certificate', 'https://www.coursera.org/professional-certificates/google-ux-design'],
             'Web Developer': ['Responsive Web Design', 'https://www.freecodecamp.org/learn/responsive-web-design/'],
         };
-
+        
         // --- Form Handling ---
         const form = document.getElementById('career-form');
         const resultContainer = document.getElementById('result-container');
@@ -230,38 +283,63 @@
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-
+            
             // Show loader and hide previous result
             resultContainer.classList.remove('hidden');
             loader.classList.remove('hidden');
             predictionResult.classList.add('hidden');
 
             const formData = new FormData(form);
-
+            
             // Construct the JSON payload for the API
+            // This now includes all features the model was trained on.
             const userInput = {
-                'AI_ML_Skills': 0, 'Academic_Performance_Score': 3.0, 'Algorithms_Skills': parseInt(formData.get('algo_skills')),
-                'Business_Analysis_Skills': 0, 'Coding_Skills_Rating': parseInt(formData.get('coding_skills')), 'Communication_Skills': 50,
-                'Computer_Architecture_Skills': 50, 'Computer_Forensics_Skills': 0, 'Cyber_Security_Skills': 0,
-                'Data_Science_Skills': 0, 'Database_Skills': 0, 'Distributed_Computing_Skills': 0,
-                'Electronics_Skills': 50, 'Extra-courses did': 'no',
-                'Graphics_Designing_Skills': 0, 'Hours working per day': parseInt(formData.get('hours_working_per_day')),
-                'Introvert': parseInt(formData.get('introvert')), 'Java_Skills': 0, 'Logical_Reasoning_Skills': parseInt(formData.get('logical_quotient')),
-                'Mathematics_Skills': parseInt(formData.get('math_skills')), 'Memory_Capability_Score': 'medium', 'Networking_Skills': parseInt(formData.get('cn_skills')),
-                'Operating_Systems_Skills': parseInt(formData.get('os_skills')), 'Programming_Skills': parseInt(formData.get('prog_concepts_skills')),
-                'Project_Management_Skills': 0, 'Public_Speaking_Skills': parseInt(formData.get('public_speaking')), 'Python_Skills': 0,
-                'Reading_Writing_Skills': 'medium', 'SQL_Skills': 0, 'Software_Development_Skills': 0,
-                'Software_Engineering_Skills': parseInt(formData.get('se_skills')), 'Technical_Communication_Skills': 0,
-                'Troubleshooting_Skills': 0, 'can work long time before system?': 1,
-                'certifications': formData.get('certifications'), 'hackathons': 1, 'olympiads': 'no',
+                'AI_ML_Skills': 0, // Default values for features not collected
+                'Academic_Performance_Score': parseFloat(formData.get('gpa')),
+                'Algorithms_Skills': parseInt(formData.get('algo_skills')),
+                'Business_Analysis_Skills': 0,
+                'Coding_Skills_Rating': parseInt(formData.get('coding_skills')),
+                'Communication_Skills': parseInt(formData.get('comm_skills')),
+                'Computer_Architecture_Skills': parseInt(formData.get('ca_skills')),
+                'Computer_Forensics_Skills': 0,
+                'Cyber_Security_Skills': 0,
+                'Data_Science_Skills': 0,
+                'Database_Skills': 0,
+                'Distributed_Computing_Skills': 0,
+                'Electronics_Skills': parseInt(formData.get('electronics_skills')),
+                'Extra-courses did': formData.get('extra_courses_did'),
+                'Graphics_Designing_Skills': 0,
+                'Hours working per day': parseInt(formData.get('hours_working_per_day')),
+                'Introvert': parseInt(formData.get('introvert')),
+                'Java_Skills': 0,
+                'Logical_Reasoning_Skills': parseInt(formData.get('logical_quotient')),
+                'Mathematics_Skills': parseInt(formData.get('math_skills')),
+                'Memory_Capability_Score': 'medium', // Assuming a default
+                'Networking_Skills': parseInt(formData.get('cn_skills')),
+                'Operating_Systems_Skills': parseInt(formData.get('os_skills')),
+                'Programming_Skills': parseInt(formData.get('prog_concepts_skills')),
+                'Project_Management_Skills': 0,
+                'Public_Speaking_Skills': parseInt(formData.get('public_speaking')),
+                'Python_Skills': 0,
+                'Reading_Writing_Skills': 'medium', // Assuming a default
+                'SQL_Skills': 0,
+                'Software_Development_Skills': 0,
+                'Software_Engineering_Skills': parseInt(formData.get('se_skills')),
+                'Technical_Communication_Skills': 0,
+                'Troubleshooting_Skills': 0,
+                'can work long time before system?': parseInt(formData.get('can_work_long_time')),
+                'certifications': formData.get('certifications'),
+                'hackathons': parseInt(formData.get('hackathons')),
+                'olympiads': formData.get('olympiads'),
                 'self-learning capability?': parseInt(formData.get('self_learning_capability')),
-                'talenttests taken?': 'no', 'worked in teams ever?': 1,
+                'talenttests taken?': formData.get('talenttests_taken'),
+                'worked in teams ever?': parseInt(formData.get('worked_in_teams')),
                 'workshops': formData.get('workshops')
             };
 
             // --- API Call ---
-            
-            const API_URL = "https://career-guide-lite.netlify.app/";
+            // IMPORTANT: Replace this URL with your deployed Vercel API URL
+            const API_URL = "https://careercompass.vercel.app/"; 
 
             try {
                 const response = await fetch(API_URL, {
